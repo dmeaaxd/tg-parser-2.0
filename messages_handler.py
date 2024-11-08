@@ -33,7 +33,7 @@ async def handler(event):
             sender = await event.get_sender()
             sender_name = f"@{sender.username}" if isinstance(sender, types.User) else None
 
-            if check_is_not_a_service_post(sender_name, original_message_text):
+            if await check_is_not_a_service_post(sender_name, original_message_text):
                 # Скачивание фото
                 media_list = []
                 if event.message.grouped_id:
