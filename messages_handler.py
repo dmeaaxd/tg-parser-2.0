@@ -9,7 +9,7 @@ from config import main_account, sources, account_1, account_2, account_3, accou
 from modules.openai_module import rewrite_message
 from modules.telegram_module import download_all_media_in_group, send_message_to_target_channel
 
-main_account.start()
+# main_account.start()
 account_1.start()
 account_2.start()
 account_3.start()
