@@ -21,7 +21,6 @@ account_6.start()
 async def handler(event):
     try:
         if event.message.message != '':
-            print(event)
 
             # Текст сообщения
             original_message_text = event.message.message
@@ -62,7 +61,7 @@ async def handler(event):
 
 
     except Exception as e:
-        logging.ERROR(f"Произошла ошибка во время обработки ивента\n{e}")
+        print(f"Произошла ошибка во время обработки ивента\n{print(event)}\n\n{e}")
 
 
 
