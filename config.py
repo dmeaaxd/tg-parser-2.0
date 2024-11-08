@@ -72,6 +72,10 @@ sources = {
     "dubay_chat": 11
 }
 
+blocked_username = ["@Cleanrobot"]
+blocked_keywords = []
+
+
 
 main_account = TelegramClient('vadim_main', int(os.getenv("MAIN_ACCOUNT_API_ID")), os.getenv("MAIN_ACCOUNT_API_HASH"))
 account_1 = TelegramClient('vadim_1', int(os.getenv("ACCOUNT_1_API_ID")), os.getenv("ACCOUNT_1_API_HASH"))

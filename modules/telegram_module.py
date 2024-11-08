@@ -1,13 +1,21 @@
 import asyncio
 import os
 
-from config import sources, target_channel_url
+from config import sources, target_channel_url, blocked_username, blocked_keywords
 
 
 async def find_target_id_by_username(username: str):
     if sources[username]:
         return sources[username]
     return None
+
+async def check_is_not_a_service_post(username, original_message: str):
+    if username in blocked_username:
+        return False
+    if blocked_keywords in original_message.lower():
+        return False
+
+    return True
 
 
 async def download_all_media_in_group(client, chat, original_post, max_amp=10):
