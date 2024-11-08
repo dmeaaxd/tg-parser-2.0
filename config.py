@@ -72,7 +72,7 @@ sources = {
     "dubay_chat": 11
 }
 
-blocked_username = ["@Cleanrobot"]
+blocked_username = ["@Cleanrobot", "@GHClone3Bot", "@Pereka4alkin", "@piar_grambot", "@ai_guard_bot"]
 blocked_keywords = []
 
 
