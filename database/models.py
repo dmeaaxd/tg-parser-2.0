@@ -3,7 +3,7 @@ from datetime import date
 from sqlalchemy import Column, Integer, String, DateTime, func, select
 from tenacity import retry, stop_after_attempt, wait_fixed
 
-from database.database import Base, engine, async_session
+from database.connection import Base, engine, async_session
 
 
 class Message(Base):
@@ -11,6 +11,7 @@ class Message(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     text = Column(String, nullable=False)
     date_added = Column(DateTime, default=func.now())
+
 
 @retry(stop=stop_after_attempt(5), wait=wait_fixed(2), retry_error_callback=lambda x: print("Не удалось подключиться к базе данных"))
 async def init_db():

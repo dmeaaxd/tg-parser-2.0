@@ -1,4 +1,4 @@
-import logging
+import asyncio
 import os
 import random
 
@@ -6,7 +6,8 @@ from telethon import events
 from telethon import types
 
 from config import main_account, sources, account_1, account_2, account_3, account_4, account_5, account_6
-from database.models import is_message_exist_today, add_message
+# from config import main_account, sources
+from database.models import is_message_exist_today, add_message, init_db
 from modules.openai_module import rewrite_message
 from modules.telegram_module import download_all_media_in_group, send_message_to_target_channel, \
     check_is_not_a_service_post
@@ -18,6 +19,11 @@ account_3.start()
 account_4.start()
 account_5.start()
 account_6.start()
+
+# Инициализация таблиц
+loop = asyncio.get_event_loop()
+loop.run_until_complete(init_db())
+
 
 @main_account.on(events.NewMessage(list(sources.keys())))
 async def handler(event):
@@ -34,14 +40,15 @@ async def handler(event):
             sender = await event.get_sender()
             sender_name = f"@{sender.username}" if isinstance(sender, types.User) else None
 
-            if await check_is_not_a_service_post(sender_name, original_message_text) and await is_message_exist_today(original_message_text):
-
+            if await check_is_not_a_service_post(sender_name, original_message_text) and await is_message_exist_today(
+                    original_message_text):
                 await add_message(original_message_text)
 
                 # Скачивание фото при наличии
                 media_list = []
                 if event.message.grouped_id:
-                    number_of_media = await download_all_media_in_group(main_account, event.message.peer_id.channel_id, event.message)
+                    number_of_media = await download_all_media_in_group(main_account, event.message.peer_id.channel_id,
+                                                                        event.message)
                     for i in range(1, number_of_media + 1):
                         media_list.append(f"photos/{event.message.id}_{i}.jpg")
                 elif event.message.media:
@@ -51,7 +58,7 @@ async def handler(event):
 
                 # Рандомный выбор аккаунта ТГ
                 client = random.choice([account_1, account_2, account_3, account_4, account_5, account_6])
-
+                # client = main_account
                 # Рерайт оригинала сообщения
                 rewrited_message = await rewrite_message(original_message_text)
 
@@ -69,9 +76,5 @@ async def handler(event):
         print(f"Произошла ошибка во время обработки ивента\n{print(event)}\n\n{e}")
 
 
-
 with main_account:
     main_account.run_until_disconnected()
-
-
-
