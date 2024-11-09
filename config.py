@@ -12,6 +12,13 @@ OPENAI_TOKEN = os.getenv("OPENAI_TOKEN")
 # Target channel URL
 target_channel_url = "https://t.me/Dubai_UAE_Hub"
 
+# Database creds
+POSTGRESQL_HOST = os.getenv("POSTGRESQL_HOST")
+POSTGRESQL_PORT = os.getenv("POSTGRESQL_PORT")
+POSTGRESQL_USER = os.getenv("POSTGRESQL_USER")
+POSTGRESQL_PASSWORD = os.getenv("POSTGRESQL_PASSWORD")
+POSTGRESQL_DBNAME = os.getenv("POSTGRESQL_DBNAME")
+
 # Source TG Channels / Chats
 sources = {
     # TEST
@@ -74,8 +81,6 @@ sources = {
 
 blocked_username = ["@Pereka4alkin", "@dima_Amaz"]
 blocked_keywords = []
-
-
 
 main_account = TelegramClient('vadim_main', int(os.getenv("MAIN_ACCOUNT_API_ID")), os.getenv("MAIN_ACCOUNT_API_HASH"))
 account_1 = TelegramClient('vadim_1', int(os.getenv("ACCOUNT_1_API_ID")), os.getenv("ACCOUNT_1_API_HASH"))
