@@ -70,6 +70,9 @@ async def handler(event):
                 for media in media_list:
                     os.remove(media)
 
+            else:
+                print(f"Найден дубликат в источнике: {channel_name}")
+
 
 
     except Exception as e:
