@@ -9,8 +9,11 @@ async def find_target_id_by_username(username: str):
         return sources[username]
     return None
 
+
 async def check_is_not_a_service_post(username, original_message: str):
     if username in blocked_username:
+        return False
+    if username.lower().endswith("bot"):
         return False
     if any(keyword in original_message.lower() for keyword in blocked_keywords):
         return False
@@ -45,7 +48,7 @@ async def download_all_media_in_group(client, chat, original_post, max_amp=10):
 
 async def send_message_to_target_channel(client, source_username, sender_name, message_text, media_list):
     message = message_text
-    if sender_name and sender_name.lower().endswith("bot"):
+    if sender_name:
         message += f"\n\n**Для связи писать сюда:** {sender_name}"
     topic_id = await find_target_id_by_username(source_username)
 
@@ -54,4 +57,3 @@ async def send_message_to_target_channel(client, source_username, sender_name, m
     else:
         await client.send_message(target_channel_url, message, reply_to=topic_id)
     await asyncio.sleep(2)
-
