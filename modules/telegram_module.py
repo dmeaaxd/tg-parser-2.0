@@ -45,7 +45,7 @@ async def download_all_media_in_group(client, chat, original_post, max_amp=10):
 
 async def send_message_to_target_channel(client, source_username, sender_name, message_text, media_list):
     message = message_text
-    if sender_name is not None:
+    if sender_name and sender_name.lower().endswith("bot"):
         message += f"\n\n**Для связи писать сюда:** {sender_name}"
     topic_id = await find_target_id_by_username(source_username)
 
