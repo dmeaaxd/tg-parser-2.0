@@ -40,10 +40,10 @@ sources = {
     "live_emirates": 3,
 
     # Аренда недвижимости
-    "RealtyDubay": 4,
-    "nedviga_dubai": 4,
-    "UAEDubai_Realty": 4,
-    "Dubai_dvizh": 4,
+    # "RealtyDubay": 4,
+    # "nedviga_dubai": 4,
+    # "UAEDubai_Realty": 4,
+    # "Dubai_dvizh": 4,
 
     # ОТЕЛИ, РЕСТОРАНЫ, РАЗВЛЕЧЕНИЯ, ЭКСКУРСИИ
     "hotel_avia_tours": 5,
@@ -62,12 +62,12 @@ sources = {
     # РАБОТА, ВАКАНСИИ И РЕЗЮМЕ
     "rabota_dubayz": 8,
     "dubai_vakansii": 8,
-    "vacancy_dxb": 8,
+    # "vacancy_dxb": 8,
 
     # ОБМЕН ВАЛЮТЫ
-    "dubaisk_obmen": 9,
-    "moneyDUBAIchat": 9,
-    "obmen_dubai_oae_24": 9,
+    # "dubaisk_obmen": 9,
+    # "moneyDUBAIchat": 9,
+    # "obmen_dubai_oae_24": 9,
 
     # АРЕНДА АВТО
     "prokat_oae": 10,
@@ -75,8 +75,8 @@ sources = {
     "RentaCar_Dubai": 10,
 
     # БАРАХОЛКА
-    "DubaiSell": 11,
-    "dubay_chat": 11
+    # "DubaiSell": 11,
+    # "dubay_chat": 11
 }
 
 blocked_username = ["@Pereka4alkin", "@dima_Amaz"]
