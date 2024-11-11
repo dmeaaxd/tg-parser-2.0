@@ -23,6 +23,7 @@ POSTGRESQL_DBNAME = os.getenv("POSTGRESQL_DBNAME")
 sources = {
     # TEST
     "testparsing12121": 12,
+    "hdjdbjdjddjdjdj": 12,
 
     # НОВОСТИ
     "ND_DubaiNews": 2,
