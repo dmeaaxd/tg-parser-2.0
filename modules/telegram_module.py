@@ -11,13 +11,13 @@ async def find_target_id_by_username(username: str):
 
 
 async def check_is_not_a_service_post(username, original_message: str):
-    if username in blocked_username:
-        return False
-    if username.lower().endswith("bot"):
-        return False
-    if any(keyword in original_message.lower() for keyword in blocked_keywords):
-        return False
-
+    if username:
+        if username in blocked_username:
+            return False
+        if username.lower().endswith("bot"):
+            return False
+        if any(keyword in original_message.lower() for keyword in blocked_keywords):
+            return False
     return True
 
 
