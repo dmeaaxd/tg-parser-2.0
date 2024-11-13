@@ -50,6 +50,9 @@ async def send_message_to_target_channel(client, source_username, sender_name, m
     message = message_text
     if sender_name:
         message += f"\n\n**Для связи писать сюда:** {sender_name}"
+    else:
+        message += f"\n\n**Услуга предоставляется:** @{source_username}"
+
     topic_id = await find_target_id_by_username(source_username)
 
     if media_list:
