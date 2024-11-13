@@ -47,13 +47,16 @@ async def download_all_media_in_group(client, chat, original_post, max_amp=10):
 
 
 async def send_message_to_target_channel(client, source_username, sender_name, message_text, media_list):
+
+    topic_id = await find_target_id_by_username(source_username)
+
     message = message_text
     if sender_name:
         message += f"\n\n**Для связи писать сюда:** {sender_name}"
     else:
-        message += f"\n\n@{source_username}"
+        if topic_id != 2:
+            message += f"\n\n@{source_username}"
 
-    topic_id = await find_target_id_by_username(source_username)
 
     if media_list:
         await client.send_file(target_channel_url, media_list, caption=message, reply_to=topic_id)
