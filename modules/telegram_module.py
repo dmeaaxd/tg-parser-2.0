@@ -54,7 +54,7 @@ async def send_message_to_target_channel(client, source_username, sender_name, m
     if sender_name:
         message += f"\n\n**Для связи писать сюда:** {sender_name}"
     else:
-        if topic_id not in [2, 6]:
+        if topic_id not in [2, 6, 8]:
             message += f"\n\n@{source_username}"
 
 
