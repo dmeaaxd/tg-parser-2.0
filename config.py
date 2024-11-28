@@ -32,7 +32,7 @@ sources = {
     "dubai_go_uae": 2,
     "live_emirates": 2,
     "dubai_zdorovo": 2,
-    "dubaichat_news": 2,
+    "Dubai_Russkie": 2,
 
     # ПРОДАЖА НЕДВИЖИМОСТИ
     "axcapital_cis": 3,
