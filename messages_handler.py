@@ -4,6 +4,7 @@ import random
 
 from telethon import events
 from telethon import types
+from telethon.tl.functions.messages import SendMultiMediaRequest
 
 from config import main_account, sources, account_1, account_2, account_3, account_4, account_5, account_6
 # from config import main_account, sources
@@ -62,8 +63,12 @@ async def handler(event):
                 rewrited_message = await rewrite_message(original_message_text)
 
                 # Отправка сообщения
-                await send_message_to_target_channel(client, channel_name, sender_name, rewrited_message, media_list)
-                print(f"Публикация с {channel_name}")
+                try:
+                    await send_message_to_target_channel(client, channel_name, sender_name, rewrited_message, media_list)
+                    print(f"Публикация с {channel_name}")
+                except SendMultiMediaRequest:
+                    await send_message_to_target_channel(client, channel_name, sender_name, original_message_text, media_list)
+                    print(f"Публикация с {channel_name}")
 
                 # Удаление после отправки
                 for media in media_list:
