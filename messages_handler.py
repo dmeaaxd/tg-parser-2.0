@@ -64,11 +64,13 @@ async def handler(event):
 
                 # Отправка сообщения
                 try:
-                    await send_message_to_target_channel(client, channel_name, sender_name, rewrited_message, media_list)
+                    await send_message_to_target_channel(client, channel_name, sender_name, rewrited_message,
+                                                         media_list)
                     print(f"Публикация с {channel_name}")
-                except SendMultiMediaRequest:
+                except Exception:
+                    # Попытка повторной отправки с оригинальным текстом
                     await send_message_to_target_channel(client, channel_name, sender_name, original_message_text, media_list)
-                    print(f"Публикация с {channel_name}")
+                    print(f"Публикация с {channel_name} с оригинальным текстом")
 
                 # Удаление после отправки
                 for media in media_list:
