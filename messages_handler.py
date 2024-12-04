@@ -28,6 +28,8 @@ loop.run_until_complete(init_db())
 
 @main_account.on(events.NewMessage(list(sources.keys())))
 async def handler(event):
+
+    print(event)
     try:
         if event.message.message != '':
 
