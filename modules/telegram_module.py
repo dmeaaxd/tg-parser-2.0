@@ -4,8 +4,12 @@ import os
 from config import sources, target_channel_url, blocked_username, blocked_keywords
 
 
-async def check_by_keywords(username: str, keywords: list) -> bool:
-    pass
+async def check_by_keywords(is_channel: bool, message: str, keywords: list) -> bool:
+    if not is_channel:
+        for keyword in keywords:
+            if keyword in message.lower().split():
+                return True
+    return False
 
 async def find_target_id_by_username(username: str):
     if sources[username]:

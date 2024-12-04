@@ -79,6 +79,8 @@ sources = {
     # "dubay_chat": 11
 }
 
+keywords = ["куплю", "продам", "обменяю"]
+
 blocked_username = ["@Pereka4alkin", "@dima_Amaz"]
 blocked_keywords = []
 

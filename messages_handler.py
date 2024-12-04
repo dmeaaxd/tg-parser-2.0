@@ -6,12 +6,12 @@ from telethon import events
 from telethon import types
 from telethon.tl.functions.messages import SendMultiMediaRequest
 
-from config import main_account, sources, account_1, account_2, account_3, account_4, account_5, account_6
+from config import main_account, sources, account_1, account_2, account_3, account_4, account_5, account_6, keywords
 # from config import main_account, sources
 from database.models import is_message_exist_today, add_message, init_db, add_message_if_not_exists
 from modules.openai_module import rewrite_message
 from modules.telegram_module import download_all_media_in_group, send_message_to_target_channel, \
-    check_is_not_a_service_post
+    check_is_not_a_service_post, check_by_keywords
 
 # main_account.start()
 account_1.start()
@@ -29,7 +29,6 @@ loop.run_until_complete(init_db())
 @main_account.on(events.NewMessage(list(sources.keys())))
 async def handler(event):
 
-    print(event)
     try:
         if event.message.message != '':
 
@@ -43,7 +42,7 @@ async def handler(event):
             sender = await event.get_sender()
             sender_name = f"@{sender.username}" if isinstance(sender, types.User) else None
 
-            if await check_is_not_a_service_post(sender_name, original_message_text) and await add_message_if_not_exists(original_message_text):
+            if await check_by_keywords(is_channel=event.message.post, message=original_message_text, keywords=keywords) and await check_is_not_a_service_post(sender_name, original_message_text) and await add_message_if_not_exists(original_message_text):
                 await add_message(original_message_text)
 
                 # Скачивание фото при наличии
