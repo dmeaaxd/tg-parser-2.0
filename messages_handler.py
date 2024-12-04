@@ -78,7 +78,7 @@ async def handler(event):
                     os.remove(media)
 
             else:
-                print(f"Найден дубликат в источнике: {channel_name}")
+                print(f"Не прошел проверки: {channel_name}")
 
 
 
