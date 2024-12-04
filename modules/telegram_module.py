@@ -9,7 +9,8 @@ async def check_by_keywords(is_channel: bool, message: str, keywords: list) -> b
         for keyword in keywords:
             if keyword in message.lower().split():
                 return True
-    return False
+        return False
+    return True
 
 async def find_target_id_by_username(username: str):
     if sources[username]:
