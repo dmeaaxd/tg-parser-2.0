@@ -81,7 +81,7 @@ sources = {
 
 keywords = ["куплю", "продам", "обменяю"]
 
-blocked_username = ["@Pereka4alkin", "@dima_Amaz"]
+blocked_username = ["@Pereka4alkin", "@dima_Amaz", "@None"]
 blocked_keywords = []
 
 main_account = TelegramClient('vadim_main', int(os.getenv("MAIN_ACCOUNT_API_ID")), os.getenv("MAIN_ACCOUNT_API_HASH"))
