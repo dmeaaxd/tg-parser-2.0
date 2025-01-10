@@ -36,7 +36,7 @@ sources = {
 
     # ПРОДАЖА НЕДВИЖИМОСТИ
     "axcapital_cis": 3,
-    "uae_forlife": 3,
+    # "uae_forlife": 3,
     "billionacedubai": 3,
 
     # Аренда недвижимости
