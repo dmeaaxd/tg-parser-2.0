@@ -17,7 +17,7 @@ from modules.telegram_module import download_all_media_in_group, send_message_to
 account_1.start()
 account_2.start()
 account_3.start()
-account_4.start()
+# account_4.start()
 account_5.start()
 account_6.start()
 
@@ -58,7 +58,7 @@ async def handler(event):
                     media_list = [file_name]
 
                 # Рандомный выбор аккаунта ТГ
-                client = random.choice([account_1, account_2, account_3, account_4, account_5, account_6])
+                client = random.choice([account_1, account_2, account_3, account_5, account_6])
                 # client = main_account
                 # Рерайт оригинала сообщения
                 rewrited_message = await rewrite_message(original_message_text)
