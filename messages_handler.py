@@ -37,11 +37,14 @@ async def handler(event):
 
             # Имя канала
             channel_name = event.chat.username if event.chat.username else None
+            print(f"\n\n\nCHANNEL NAME - {channel_name}\n\n\n")
 
             # Автор при наличии
             sender = await event.get_sender()
             # sender_name = f"@{sender.username}" if isinstance(sender, types.User) else None
             sender_name = f"@{sender.username}" if isinstance(sender, types.User) and sender.username else "Unknown"
+            print(f"\n\n\nSENDER NAME - {sender_name}\n\n\n")
+
 
             if await check_by_keywords(is_channel=event.message.post, message=original_message_text, keywords=keywords) and await check_is_not_a_service_post(sender_name, original_message_text) and await add_message_if_not_exists(original_message_text):
                 await add_message(original_message_text)
