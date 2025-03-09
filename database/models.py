@@ -6,6 +6,7 @@ from tenacity import retry, stop_after_attempt, wait_fixed
 from database.connection import Base, engine, async_session
 
 
+
 class Message(Base):
     __tablename__ = 'messages'
     id = Column(Integer, primary_key=True, autoincrement=True)
@@ -27,6 +28,7 @@ async def add_message(text: str):
             message = Message(text=text)
             session.add(message)
             await session.commit()
+
 
 # Асинхронная функция для проверки наличия сообщения с указанным текстом за сегодня
 @retry(stop=stop_after_attempt(5), wait=wait_fixed(2))

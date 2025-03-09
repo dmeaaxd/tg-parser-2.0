@@ -36,11 +36,13 @@ async def handler(event):
             original_message_text = event.message.message
 
             # Имя канала
-            channel_name = event.chat.username
+            # channel_name = event.chat.username
+            channel_name = event.chat.username if event.chat.username else event.chat.id
 
             # Автор при наличии
             sender = await event.get_sender()
-            sender_name = f"@{sender.username}" if isinstance(sender, types.User) else None
+            # sender_name = f"@{sender.username}" if isinstance(sender, types.User) else None
+            sender_name = f"@{sender.username}" if isinstance(sender, types.User) and sender.username else "Unknown"
 
             if await check_by_keywords(is_channel=event.message.post, message=original_message_text, keywords=keywords) and await check_is_not_a_service_post(sender_name, original_message_text) and await add_message_if_not_exists(original_message_text):
                 await add_message(original_message_text)
@@ -70,8 +72,11 @@ async def handler(event):
                     print(f"Публикация с {channel_name}")
                 except Exception:
                     # Попытка повторной отправки с оригинальным текстом
-                    await send_message_to_target_channel(client, channel_name, sender_name, original_message_text, media_list)
-                    print(f"Публикация с {channel_name} с оригинальным текстом")
+                    try:
+                        await send_message_to_target_channel(client, channel_name, sender_name, original_message_text, media_list)
+                        print(f"Публикация с {channel_name} с оригинальным текстом")
+                    except Exception:
+                        print(f"Ошибка публикации в канал / чат: {channel_name}")
 
                 # Удаление после отправки
                 for media in media_list:
