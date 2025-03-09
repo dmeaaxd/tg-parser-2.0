@@ -36,8 +36,7 @@ async def handler(event):
             original_message_text = event.message.message
 
             # Имя канала
-            # channel_name = event.chat.username
-            channel_name = event.chat.username if event.chat.username else event.chat.id
+            channel_name = event.chat.username if event.chat.username else None
 
             # Автор при наличии
             sender = await event.get_sender()
@@ -64,6 +63,10 @@ async def handler(event):
                 # client = main_account
                 # Рерайт оригинала сообщения
                 rewrited_message = await rewrite_message(original_message_text)
+
+                if channel_name is None:
+                    print(f"Ошибка: у канала нет username, event.chat.id: {event.chat.id}")
+                    return
 
                 # Отправка сообщения
                 try:
