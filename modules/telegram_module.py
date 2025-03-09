@@ -57,7 +57,7 @@ async def download_all_media_in_group(client, chat, original_post, max_amp=10):
 async def send_message_to_target_channel(client, source_username, sender_name, message_text, media_list):
     try:
         entity = await client.get_entity(source_username)
-        print(f"Канал найден: {entity.id}")
+        # print(f"Канал найден: {entity.id}")
     except Exception as e:
         print(f"Ошибка при получении канала {source_username}: {e}")
         return
