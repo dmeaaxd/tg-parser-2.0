@@ -23,7 +23,6 @@ POSTGRESQL_DBNAME = os.getenv("POSTGRESQL_DBNAME")
 sources = {
     # TEST
     "testparsing12121": 12,
-    "hdjdbjdjddjdjdj": 12,
 
     # НОВОСТИ
     "ND_DubaiNews": 2,
@@ -65,9 +64,9 @@ sources = {
     # "vacancy_dxb": 8,
 
     # ОБМЕН ВАЛЮТЫ
-    "dubaisk_obmen": 9,
-    "moneyDUBAIchat": 9,
-    "obmen_dubai_oae_24": 9,
+    # "dubaisk_obmen": 9,
+    # "moneyDUBAIchat": 9,
+    # "obmen_dubai_oae_24": 9,
 
     # АРЕНДА АВТО
     "prokat_oae": 10,
