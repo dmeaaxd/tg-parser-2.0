@@ -64,9 +64,8 @@ sources = {
     # "vacancy_dxb": 8,
 
     # ОБМЕН ВАЛЮТЫ
-    # "dubaisk_obmen": 9,
-    # "moneyDUBAIchat": 9,
-    # "obmen_dubai_oae_24": 9,
+    "DxbSwap": 9,
+    "MoneyDubai": 9,
 
     # АРЕНДА АВТО
     "prokat_oae": 10,
