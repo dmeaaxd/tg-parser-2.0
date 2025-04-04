@@ -41,8 +41,8 @@ async def handler(event):
 
             # Автор при наличии
             sender = await event.get_sender()
-            # sender_name = f"@{sender.username}" if isinstance(sender, types.User) else None
-            sender_name = f"@{sender.username}" if isinstance(sender, types.User) and sender.username else "Unknown"
+            sender_name = f"@{sender.username}" if isinstance(sender, types.User) else None
+            # sender_name = f"@{sender.username}" if isinstance(sender, types.User) and sender.username else "Unknown"
             # print(f"\n\n\nSENDER NAME - {sender_name}\n\n\n")
 
 
